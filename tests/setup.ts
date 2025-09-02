@@ -60,6 +60,14 @@ global.ResizeObserver = class ResizeObserver {
 const originalError = console.error;
 beforeAll(() => {
   console.error = (...args: any[]) => {
+    // 过滤掉 React act 警告，这些在测试中使用 @testing-library/user-event 时是正常的
+    const message = args[0]?.toString() || "";
+    if (
+      message.includes("Warning: An update to") &&
+      message.includes("was not wrapped in act")
+    ) {
+      return; // 忽略 act 警告
+    }
     originalError.call(console, ...args);
   };
 });

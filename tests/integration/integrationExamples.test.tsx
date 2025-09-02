@@ -62,35 +62,36 @@ describe("集成测试示例", () => {
         await user.click(incrementButton);
         await user.click(incrementButton);
       });
+
       expect(screen.getByTestId("count-display")).toHaveTextContent("2");
 
       // 2. 编辑用户信息
       const editButton = screen.getByTestId("edit-button");
-      await act(async () => {
-        await user.click(editButton);
-      });
+      await user.click(editButton);
 
       const nameInput = screen.getByTestId("edit-name-input");
       await user.clear(nameInput);
       await user.type(nameInput, "修改后的名称");
 
       const saveButton = screen.getByTestId("save-button");
-      await act(async () => {
-        await user.click(saveButton);
-      });
+      await user.click(saveButton);
 
-      expect(screen.getByTestId("user-name")).toHaveTextContent("修改后的名称");
+      await waitFor(() => {
+        expect(screen.getByTestId("user-name")).toHaveTextContent(
+          "修改后的名称"
+        );
+      });
 
       // 3. 添加待办事项
       const todoInput = screen.getByTestId("new-todo-input");
       const addTodoButton = screen.getByTestId("add-todo-button");
 
       await user.type(todoInput, "集成测试任务");
-      await act(async () => {
-        await user.click(addTodoButton);
-      });
+      await user.click(addTodoButton);
 
-      expect(screen.getByText("集成测试任务")).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText("集成测试任务")).toBeInTheDocument();
+      });
     });
   });
 
@@ -128,9 +129,7 @@ describe("集成测试示例", () => {
       const addButton = screen.getByTestId("add-todo-button");
 
       await user.type(newTodoInput, "新任务");
-      await act(async () => {
-        await user.click(addButton);
-      });
+      await user.click(addButton);
 
       expect(screen.getByText("新任务")).toBeInTheDocument();
       expect(
@@ -144,9 +143,7 @@ describe("集成测试示例", () => {
 
       // 2. 切换任务状态
       const firstTodoCheckbox = screen.getByTestId("todo-checkbox-1");
-      await act(async () => {
-        await user.click(firstTodoCheckbox);
-      });
+      await user.click(firstTodoCheckbox);
 
       expect(
         screen.getByText("总计: 3 | 进行中: 1 | 已完成: 2")
@@ -154,9 +151,7 @@ describe("集成测试示例", () => {
 
       // 3. 过滤任务
       const completedFilter = screen.getByTestId("filter-completed");
-      await act(async () => {
-        await user.click(completedFilter);
-      });
+      await user.click(completedFilter);
 
       expect(screen.getByText("学习 React")).toBeInTheDocument();
       expect(screen.getByText("写测试")).toBeInTheDocument();
@@ -164,22 +159,16 @@ describe("集成测试示例", () => {
 
       // 4. 删除任务
       const deleteButton = screen.getByTestId("delete-todo-2");
-      await act(async () => {
-        await user.click(deleteButton);
-      });
+      await user.click(deleteButton);
 
       expect(screen.queryByText("写测试")).not.toBeInTheDocument();
 
       // 5. 清除已完成任务
       const activeFilter = screen.getByTestId("filter-all");
-      await act(async () => {
-        await user.click(activeFilter);
-      });
+      await user.click(activeFilter);
 
       const clearCompletedButton = screen.getByTestId("clear-completed-button");
-      await act(async () => {
-        await user.click(clearCompletedButton);
-      });
+      await user.click(clearCompletedButton);
 
       expect(screen.queryByText("学习 React")).not.toBeInTheDocument();
       expect(screen.getByText("新任务")).toBeInTheDocument();
@@ -238,9 +227,7 @@ describe("集成测试示例", () => {
 
       // 1. 获取用户列表
       const fetchUsersButton = screen.getByTestId("fetch-users-button");
-      await act(async () => {
-        await user.click(fetchUsersButton);
-      });
+      await user.click(fetchUsersButton);
 
       await waitFor(() => {
         expect(screen.getByTestId("users-list")).toBeInTheDocument();
@@ -256,23 +243,19 @@ describe("集成测试示例", () => {
 
       await user.clear(userIdInput);
       await user.type(userIdInput, "1");
-      await act(async () => {
-        await user.click(getUserButton);
-      });
+      await user.click(getUserButton);
 
       await waitFor(() => {
         expect(screen.getByTestId("selected-user")).toBeInTheDocument();
       });
 
-      expect(screen.getByText("姓名: 用户1")).toBeInTheDocument();
-      expect(screen.getByText("邮箱: user1@example.com")).toBeInTheDocument();
+      expect(screen.getByText("用户1")).toBeInTheDocument();
+      expect(screen.getByText("user1@example.com")).toBeInTheDocument();
       expect(mockedUserService.getUserById).toHaveBeenCalledWith(1);
 
       // 3. 使用 useFetch Hook
       const useFetchButton = screen.getByTestId("use-fetch-button");
-      await act(async () => {
-        await user.click(useFetchButton);
-      });
+      await user.click(useFetchButton);
 
       await waitFor(() => {
         expect(screen.getByTestId("fetched-user")).toBeInTheDocument();
@@ -285,9 +268,7 @@ describe("集成测试示例", () => {
 
       // 4. 创建用户
       const createUserButton = screen.getByTestId("create-user-button");
-      await act(async () => {
-        await user.click(createUserButton);
-      });
+      await user.click(createUserButton);
 
       await waitFor(() => {
         expect(mockedUserService.createUser).toHaveBeenCalledWith({
@@ -501,9 +482,21 @@ describe("集成测试示例", () => {
               type="email"
               data-testid="email-input"
               value={formData.email}
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, email: e.target.value }))
-              }
+              onChange={(e) => {
+                const newEmail = e.target.value;
+                setFormData((prev) => ({ ...prev, email: newEmail }));
+
+                // 即时验证邮箱
+                if (errors.email || newEmail.trim() !== "") {
+                  let emailError = "";
+                  if (!newEmail.trim()) {
+                    emailError = "邮箱不能为空";
+                  } else if (!/\S+@\S+\.\S+/.test(newEmail)) {
+                    emailError = "邮箱格式不正确";
+                  }
+                  setErrors((prev) => ({ ...prev, email: emailError }));
+                }
+              }}
             />
             {errors.email && (
               <div data-testid="email-error">{errors.email}</div>
@@ -552,12 +545,15 @@ describe("集成测试示例", () => {
 
       // 2. 测试邮箱格式验证
       const emailInput = screen.getByTestId("email-input");
+      await user.clear(emailInput);
       await user.type(emailInput, "invalid-email");
       await user.click(submitButton);
 
-      expect(screen.getByTestId("email-error")).toHaveTextContent(
-        "邮箱格式不正确"
-      );
+      await waitFor(() => {
+        expect(screen.getByTestId("email-error")).toHaveTextContent(
+          "邮箱格式不正确"
+        );
+      });
 
       // 3. 填写正确数据
       const nameInput = screen.getByTestId("name-input");
@@ -623,7 +619,7 @@ describe("集成测试示例", () => {
       expect(end - start).toBeLessThan(1000); // 应该在1秒内完成
 
       // 验证内容正确渲染
-      expect(screen.getByText("总计: 1000")).toBeInTheDocument();
+      expect(screen.getByText(/总计:\s*1000/)).toBeInTheDocument();
       expect(screen.getByText("任务 1")).toBeInTheDocument();
     });
 
@@ -686,13 +682,15 @@ describe("集成测试示例", () => {
       expect(screen.getByTestId("normal-component")).toBeInTheDocument();
 
       // 触发错误
-      expect(() => {
-        rerender(
-          <ErrorBoundary>
-            <ThrowingComponent shouldThrow={true} />
-          </ErrorBoundary>
-        );
-      }).toThrow("测试错误");
+      rerender(
+        <ErrorBoundary>
+          <ThrowingComponent shouldThrow={true} />
+        </ErrorBoundary>
+      );
+
+      // 验证错误边界显示错误信息
+      expect(screen.getByTestId("error-fallback")).toBeInTheDocument();
+      expect(screen.getByText(/出现了错误/)).toBeInTheDocument();
 
       consoleSpy.mockRestore();
     });

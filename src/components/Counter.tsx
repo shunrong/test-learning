@@ -28,7 +28,7 @@ export const Counter: React.FC<CounterProps> = ({
       step,
     });
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     onCountChange?.(count);
   }, [count, onCountChange]);
 
