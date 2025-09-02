@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserProfile组件 快照测试 应该匹配离线状态快照 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(245, 245, 245);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <img
+      alt="John Doe的头像"
+      data-testid="user-avatar"
+      src="https://example.com/avatar.jpg"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;"
+    />
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      John Doe
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      john@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(134, 142, 150);"
+    >
+      离线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UserProfile组件 快照测试 应该匹配编辑状态快照 1`] = `
+<div
+  data-testid="user-profile-edit"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <h3>
+    编辑用户信息
+  </h3>
+  <div
+    style="margin-bottom: 12px;"
+  >
+    <label
+      style="display: block; margin-bottom: 4px;"
+    >
+      姓名:
+    </label>
+    <input
+      data-testid="edit-name-input"
+      style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value="John Doe"
+    />
+  </div>
+  <div
+    style="margin-bottom: 16px;"
+  >
+    <label
+      style="display: block; margin-bottom: 4px;"
+    >
+      邮箱:
+    </label>
+    <input
+      data-testid="edit-email-input"
+      style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="email"
+      value="john@example.com"
+    />
+  </div>
+  <div
+    style="display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="save-button"
+      style="padding: 8px 16px; background-color: rgb(81, 207, 102); color: white; border-radius: 4px; cursor: pointer;"
+    >
+      保存
+    </button>
+    <button
+      data-testid="cancel-button"
+      style="padding: 8px 16px; background-color: rgb(134, 142, 150); color: white; border-radius: 4px; cursor: pointer;"
+    >
+      取消
+    </button>
+  </div>
+</div>
+`;
+
+exports[`UserProfile组件 快照测试 应该匹配默认状态快照 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <img
+      alt="John Doe的头像"
+      data-testid="user-avatar"
+      src="https://example.com/avatar.jpg"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;"
+    />
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      John Doe
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      john@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
