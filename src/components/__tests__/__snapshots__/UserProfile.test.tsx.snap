@@ -58,12 +58,14 @@ exports[`UserProfile组件 快照测试 应该匹配编辑状态快照 1`] = `
     style="margin-bottom: 12px;"
   >
     <label
+      for="edit-name-input"
       style="display: block; margin-bottom: 4px;"
     >
       姓名:
     </label>
     <input
       data-testid="edit-name-input"
+      id="edit-name-input"
       style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
       type="text"
       value="John Doe"
@@ -73,12 +75,14 @@ exports[`UserProfile组件 快照测试 应该匹配编辑状态快照 1`] = `
     style="margin-bottom: 16px;"
   >
     <label
+      for="edit-email-input"
       style="display: block; margin-bottom: 4px;"
     >
       邮箱:
     </label>
     <input
       data-testid="edit-email-input"
+      id="edit-email-input"
       style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
       type="email"
       value="john@example.com"

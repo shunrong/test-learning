@@ -2,7 +2,7 @@
  * Fetch Hook - 用于演示异步数据获取和错误处理的测试
  */
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 export interface UseFetchState<T> {
   data: T | null;
@@ -32,12 +32,23 @@ export function useFetch<T>(
     error: null,
   });
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+
   const execute = useCallback(async () => {
+    // 取消之前的请求
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    abortControllerRef.current = new AbortController();
+    const controller = abortControllerRef.current;
+
     setState((prev) => ({ ...prev, loading: true, error: null }));
 
+    let timeoutId: NodeJS.Timeout | undefined;
+
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), timeout);
+      timeoutId = setTimeout(() => controller.abort(), timeout);
 
       const response = await fetch(url, {
         signal: controller.signal,
@@ -50,8 +61,14 @@ export function useFetch<T>(
       }
 
       const data = await response.json();
-      setState({ data, loading: false, error: null });
+
+      // 检查请求是否被取消
+      if (!controller.signal.aborted) {
+        setState({ data, loading: false, error: null });
+      }
     } catch (error) {
+      if (timeoutId) clearTimeout(timeoutId);
+
       if (error instanceof Error) {
         if (error.name === "AbortError") {
           setState((prev) => ({
@@ -84,6 +101,12 @@ export function useFetch<T>(
     if (immediate) {
       execute();
     }
+
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
   }, [execute, immediate]);
 
   return {

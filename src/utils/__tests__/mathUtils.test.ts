@@ -74,7 +74,8 @@ describe("mathUtils", () => {
 
       it("零除以任何数应该返回零", () => {
         expect(divide(0, 5)).toBe(0);
-        expect(divide(0, -10)).toBe(0);
+        // 使用 == 而不是 toBe，因为 -0 和 0 在数学上相等
+        expect(divide(0, -10) == 0).toBe(true);
       });
     });
   });

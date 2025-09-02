@@ -2,7 +2,7 @@
  * UserProfile 组件测试 - 演示复杂组件状态和表单交互测试
  */
 
-import React from "react";
+import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { UserProfile } from "../UserProfile";
@@ -109,7 +109,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       expect(screen.getByTestId("user-profile-edit")).toBeInTheDocument();
       expect(screen.getByTestId("edit-name-input")).toBeInTheDocument();
@@ -122,7 +124,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId(
         "edit-name-input"
@@ -139,16 +143,20 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
       const emailInput = screen.getByTestId("edit-email-input");
 
-      await user.clear(nameInput);
-      await user.type(nameInput, "Jane Smith");
+      await act(async () => {
+        await user.clear(nameInput);
+        await user.type(nameInput, "Jane Smith");
 
-      await user.clear(emailInput);
-      await user.type(emailInput, "jane.smith@example.com");
+        await user.clear(emailInput);
+        await user.type(emailInput, "jane.smith@example.com");
+      });
 
       expect(nameInput).toHaveValue("Jane Smith");
       expect(emailInput).toHaveValue("jane.smith@example.com");
@@ -159,13 +167,19 @@ describe("UserProfile组件", () => {
       const onEdit = jest.fn();
       render(<UserProfile {...defaultProps} onEdit={onEdit} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
-      await user.clear(nameInput);
-      await user.type(nameInput, "Updated Name");
+      await act(async () => {
+        await user.clear(nameInput);
+        await user.type(nameInput, "Updated Name");
+      });
 
-      await user.click(screen.getByTestId("save-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("save-button"));
+      });
 
       expect(onEdit).toHaveBeenCalledWith({
         name: "Updated Name",
@@ -182,15 +196,21 @@ describe("UserProfile组件", () => {
       const onEdit = jest.fn();
       render(<UserProfile {...defaultProps} onEdit={onEdit} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       // 修改值
       const nameInput = screen.getByTestId("edit-name-input");
-      await user.clear(nameInput);
-      await user.type(nameInput, "Changed Name");
+      await act(async () => {
+        await user.clear(nameInput);
+        await user.type(nameInput, "Changed Name");
+      });
 
       // 取消
-      await user.click(screen.getByTestId("cancel-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("cancel-button"));
+      });
 
       expect(onEdit).not.toHaveBeenCalled();
 
@@ -198,7 +218,9 @@ describe("UserProfile组件", () => {
       expect(screen.getByTestId("user-profile")).toBeInTheDocument();
 
       // 再次进入编辑模式，值应该是原始值
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
       const nameInputAfterCancel = screen.getByTestId(
         "edit-name-input"
       ) as HTMLInputElement;
@@ -237,7 +259,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
       const emailInput = screen.getByTestId("edit-email-input");
@@ -252,7 +276,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
       const emailInput = screen.getByTestId("edit-email-input");
@@ -278,11 +304,15 @@ describe("UserProfile组件", () => {
       const onEdit = jest.fn();
       render(<UserProfile {...defaultProps} onEdit={onEdit} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
-      await user.clear(nameInput);
-      await user.type(nameInput, "New Name{enter}");
+      await act(async () => {
+        await user.clear(nameInput);
+        await user.type(nameInput, "New Name{enter}");
+      });
 
       // 注意：在这个例子中我们没有实现Enter键保存功能
       // 这个测试演示了如何测试键盘事件
@@ -304,12 +334,16 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       const { rerender } = render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       // 在表单中修改值
       const nameInput = screen.getByTestId("edit-name-input");
-      await user.clear(nameInput);
-      await user.type(nameInput, "Form Value");
+      await act(async () => {
+        await user.clear(nameInput);
+        await user.type(nameInput, "Form Value");
+      });
 
       // 改变Props
       rerender(<UserProfile {...defaultProps} name="Props Value" />);
@@ -357,7 +391,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       // 检查label和input的关联
       expect(screen.getByLabelText("姓名:")).toBeInTheDocument();
@@ -375,7 +411,9 @@ describe("UserProfile组件", () => {
       const user = userEvent.setup();
       const { container } = render(<UserProfile {...defaultProps} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
       expect(container.firstChild).toMatchSnapshot();
     });
 
@@ -404,12 +442,24 @@ describe("UserProfile组件", () => {
 
       render(<UserProfile {...defaultProps} onEdit={onEdit} />);
 
-      await user.click(screen.getByTestId("edit-button"));
+      await act(async () => {
+        await user.click(screen.getByTestId("edit-button"));
+      });
 
       // 应该不会因为回调错误而崩溃
-      expect(() => {
-        fireEvent.click(screen.getByTestId("save-button"));
-      }).not.toThrow();
+      await act(async () => {
+        await user.click(screen.getByTestId("save-button"));
+      });
+
+      // 验证错误被记录
+      expect(consoleSpy).toHaveBeenCalledWith(
+        "Error in onEdit callback:",
+        expect.any(Error)
+      );
+
+      // 验证组件仍然正常工作（应该退出编辑模式）
+      expect(screen.getByTestId("user-profile")).toBeInTheDocument();
+      expect(screen.queryByTestId("user-profile-edit")).not.toBeInTheDocument();
 
       consoleSpy.mockRestore();
     });
@@ -425,8 +475,12 @@ describe("UserProfile组件", () => {
 
       // 执行多次编辑操作
       for (let i = 0; i < 10; i++) {
-        await user.click(screen.getByTestId("edit-button"));
-        await user.click(screen.getByTestId("cancel-button"));
+        await act(async () => {
+          await user.click(screen.getByTestId("edit-button"));
+        });
+        await act(async () => {
+          await user.click(screen.getByTestId("cancel-button"));
+        });
       }
 
       const end = performance.now();

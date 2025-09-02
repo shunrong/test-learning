@@ -2,7 +2,8 @@
  * useCounter Hook 测试 - 演示自定义 Hook 的测试方法
  */
 
-import { renderHook, act } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
+import { act } from "react";
 import { useCounter } from "../useCounter";
 
 describe("useCounter", () => {
@@ -305,7 +306,7 @@ describe("useCounter", () => {
       });
 
       expect(result.current.count).toBe(14);
-      expect(result.current.canIncrement).toBe(true); // 14 + 3 = 17 > 15，但当前还能递增一次
+      expect(result.current.canIncrement).toBe(false); // 14 + 3 = 17 > 15，不能再递增
 
       act(() => {
         // 再次递增: 14 + 3 = 17 > 15，应该保持在 14

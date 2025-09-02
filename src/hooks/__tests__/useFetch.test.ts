@@ -2,7 +2,8 @@
  * useFetch Hook 测试 - 演示异步Hook和网络请求的测试
  */
 
-import { renderHook, act, waitFor } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
+import { act } from "react";
 import { useFetch } from "../useFetch";
 
 // Mock fetch API
@@ -219,7 +220,14 @@ describe("useFetch", () => {
 
       fetchMock.mockImplementation((url, options) => {
         abortSignal = options?.signal as AbortSignal;
-        return new Promise(() => {}); // 永远不resolve，模拟慢请求
+        return new Promise((_, reject) => {
+          // 监听 abort 事件并拒绝 promise
+          options?.signal?.addEventListener("abort", () => {
+            reject(
+              new DOMException("The operation was aborted.", "AbortError")
+            );
+          });
+        });
       });
 
       const { result } = renderHook(() =>
@@ -233,13 +241,13 @@ describe("useFetch", () => {
         jest.advanceTimersByTime(1000);
       });
 
-      // 验证请求被取消
-      expect(abortSignal?.aborted).toBe(true);
-
+      // 等待状态更新
       await waitFor(() => {
         expect(result.current.loading).toBe(false);
       });
 
+      // 验证请求被取消和错误状态
+      expect(abortSignal?.aborted).toBe(true);
       expect(result.current.error?.message).toBe("Request timed out");
     });
 
@@ -351,6 +359,9 @@ describe("useFetch", () => {
       const { unmount } = renderHook(() =>
         useFetch("https://api.example.com/data")
       );
+
+      // 等待一下确保请求开始
+      await new Promise((resolve) => setTimeout(resolve, 10));
 
       // 卸载组件
       unmount();

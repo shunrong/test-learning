@@ -2,7 +2,8 @@
  * useLocalStorage Hook 测试 - 演示存储和副作用的测试
  */
 
-import { renderHook, act } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
+import { act } from "react";
 import { useLocalStorage } from "../useLocalStorage";
 
 // Mock localStorage
@@ -33,18 +34,23 @@ Object.defineProperty(window, "localStorage", {
   writable: true,
 });
 
-// Mock console.error to test error handling
-const consoleErrorSpy = jest
-  .spyOn(console, "error")
-  .mockImplementation(() => {});
-
 describe("useLocalStorage", () => {
+  // Mock console.error to test error handling
+  let consoleErrorSpy: jest.SpyInstance;
+
   beforeEach(() => {
     localStorageMock.clear();
+    // 清除所有 mock 调用历史
     jest.clearAllMocks();
+    localStorageMock.getItem.mockClear();
+    localStorageMock.setItem.mockClear();
+    localStorageMock.removeItem.mockClear();
+    // 创建新的 spy 在每个测试前
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
-  afterAll(() => {
+  afterEach(() => {
+    // 恢复 spy 在每个测试后
     consoleErrorSpy.mockRestore();
   });
 
@@ -214,7 +220,8 @@ describe("useLocalStorage", () => {
   describe("错误处理", () => {
     it("应该处理JSON解析错误", () => {
       // 设置无效的JSON
-      localStorageMock.setItem("invalid-json", "invalid json string");
+      const originalGetItem = localStorageMock.getItem;
+      localStorageMock.getItem.mockReturnValueOnce("invalid json string");
 
       const { result } = renderHook(() =>
         useLocalStorage("invalid-json", "default")
@@ -225,12 +232,15 @@ describe("useLocalStorage", () => {
         'Error reading localStorage key "invalid-json":',
         expect.any(SyntaxError)
       );
+
+      // 恢复原始实现
+      localStorageMock.getItem.mockImplementation(originalGetItem);
     });
 
     it("应该处理localStorage读取错误", () => {
       // Mock getItem to throw an error
       const originalGetItem = localStorageMock.getItem;
-      localStorageMock.getItem.mockImplementation(() => {
+      localStorageMock.getItem.mockImplementationOnce(() => {
         throw new Error("localStorage access denied");
       });
 
@@ -254,7 +264,8 @@ describe("useLocalStorage", () => {
       );
 
       // Mock setItem to throw an error
-      localStorageMock.setItem.mockImplementation(() => {
+      const originalSetItem = localStorageMock.setItem;
+      localStorageMock.setItem.mockImplementationOnce(() => {
         throw new Error("localStorage quota exceeded");
       });
 
@@ -266,6 +277,9 @@ describe("useLocalStorage", () => {
         'Error setting localStorage key "test-key":',
         expect.any(Error)
       );
+
+      // 恢复原始实现
+      localStorageMock.setItem.mockImplementation(originalSetItem);
     });
 
     it("应该处理localStorage删除错误", () => {
@@ -274,7 +288,8 @@ describe("useLocalStorage", () => {
       );
 
       // Mock removeItem to throw an error
-      localStorageMock.removeItem.mockImplementation(() => {
+      const originalRemoveItem = localStorageMock.removeItem;
+      localStorageMock.removeItem.mockImplementationOnce(() => {
         throw new Error("localStorage access denied");
       });
 
@@ -286,6 +301,9 @@ describe("useLocalStorage", () => {
         'Error removing localStorage key "test-key":',
         expect.any(Error)
       );
+
+      // 恢复原始实现
+      localStorageMock.removeItem.mockImplementation(originalRemoveItem);
     });
   });
 
@@ -299,11 +317,13 @@ describe("useLocalStorage", () => {
 
       // 模拟另一个标签页修改了localStorage
       act(() => {
-        const storageEvent = new StorageEvent("storage", {
-          key: "sync-key",
-          newValue: JSON.stringify("updated-from-another-tab"),
-          oldValue: JSON.stringify("initial"),
-          storageArea: window.localStorage,
+        const storageEvent = new Event("storage") as StorageEvent;
+        Object.defineProperty(storageEvent, "key", { value: "sync-key" });
+        Object.defineProperty(storageEvent, "newValue", {
+          value: JSON.stringify("updated-from-another-tab"),
+        });
+        Object.defineProperty(storageEvent, "oldValue", {
+          value: JSON.stringify("initial"),
         });
         window.dispatchEvent(storageEvent);
       });
@@ -318,10 +338,10 @@ describe("useLocalStorage", () => {
 
       // 模拟另一个key的变化
       act(() => {
-        const storageEvent = new StorageEvent("storage", {
-          key: "other-key",
-          newValue: JSON.stringify("other-value"),
-          storageArea: window.localStorage,
+        const storageEvent = new Event("storage") as StorageEvent;
+        Object.defineProperty(storageEvent, "key", { value: "other-key" });
+        Object.defineProperty(storageEvent, "newValue", {
+          value: JSON.stringify("other-value"),
         });
         window.dispatchEvent(storageEvent);
       });
@@ -336,10 +356,10 @@ describe("useLocalStorage", () => {
 
       // 模拟接收到无效JSON
       act(() => {
-        const storageEvent = new StorageEvent("storage", {
-          key: "sync-key",
-          newValue: "invalid json",
-          storageArea: window.localStorage,
+        const storageEvent = new Event("storage") as StorageEvent;
+        Object.defineProperty(storageEvent, "key", { value: "sync-key" });
+        Object.defineProperty(storageEvent, "newValue", {
+          value: "invalid json",
         });
         window.dispatchEvent(storageEvent);
       });
@@ -445,17 +465,21 @@ describe("useLocalStorage", () => {
     });
 
     it("应该能够处理频繁的更新", () => {
+      // 完全重新创建 mock
+      const testMock = jest.fn();
+      localStorageMock.setItem = testMock;
+
       const { result } = renderHook(() => useLocalStorage("counter", 0));
 
       // 快速连续更新
-      act(() => {
-        for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 10; i++) {
+        act(() => {
           result.current[1]((prev) => prev + 1);
-        }
-      });
+        });
+      }
 
       expect(result.current[0]).toBe(10);
-      expect(localStorageMock.setItem).toHaveBeenCalledTimes(10);
+      expect(testMock).toHaveBeenCalledTimes(10);
     });
   });
 

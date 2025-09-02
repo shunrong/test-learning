@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoList组件 快照测试 应该匹配有数据状态的快照 1`] = `
+<div
+  data-testid="todo-list"
+  style="max-width: 500px;"
+>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <input
+      data-testid="new-todo-input"
+      placeholder="添加新的待办事项..."
+      style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value=""
+    />
+    <button
+      data-testid="add-todo-button"
+      disabled=""
+      style="padding: 8px 16px; background-color: rgb(221, 221, 221); color: white; border-radius: 4px; cursor: not-allowed;"
+    >
+      添加
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="filter-all"
+      style="padding: 4px 12px; background-color: rgb(116, 192, 252); color: white; border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      全部
+    </button>
+    <button
+      data-testid="filter-active"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      进行中
+    </button>
+    <button
+      data-testid="filter-completed"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      已完成
+    </button>
+  </div>
+  <div
+    data-testid="todo-stats"
+    style="margin-bottom: 16px; padding: 8px; background-color: rgb(248, 249, 250); border-radius: 4px; font-size: 14px;"
+  >
+    总计: 
+    3
+     | 进行中: 
+    2
+     | 已完成:
+     
+    1
+  </div>
+  <div
+    data-testid="todo-items"
+  >
+    <div
+      data-testid="todo-item-1"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: white;"
+    >
+      <input
+        data-testid="todo-checkbox-1"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-1"
+        style="flex: 1; text-decoration: none; color: rgb(0, 0, 0);"
+      >
+        学习 React
+      </span>
+      <button
+        data-testid="delete-todo-1"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+    <div
+      data-testid="todo-item-2"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: rgb(248, 249, 250);"
+    >
+      <input
+        checked=""
+        data-testid="todo-checkbox-2"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-2"
+        style="flex: 1; text-decoration: line-through; color: rgb(102, 102, 102);"
+      >
+        写单元测试
+      </span>
+      <button
+        data-testid="delete-todo-2"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+    <div
+      data-testid="todo-item-3"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: white;"
+    >
+      <input
+        data-testid="todo-checkbox-3"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-3"
+        style="flex: 1; text-decoration: none; color: rgb(0, 0, 0);"
+      >
+        完成项目
+      </span>
+      <button
+        data-testid="delete-todo-3"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+  </div>
+  <div
+    style="margin-top: 16px; text-align: center;"
+  >
+    <button
+      data-testid="clear-completed-button"
+      style="padding: 8px 16px; background-color: rgb(134, 142, 150); color: white; border-radius: 4px; cursor: pointer;"
+    >
+      清除已完成 (
+      1
+      )
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TodoList组件 快照测试 应该匹配空状态的快照 1`] = `
+<div
+  data-testid="todo-list"
+  style="max-width: 500px;"
+>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <input
+      data-testid="new-todo-input"
+      placeholder="添加新的待办事项..."
+      style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value=""
+    />
+    <button
+      data-testid="add-todo-button"
+      disabled=""
+      style="padding: 8px 16px; background-color: rgb(221, 221, 221); color: white; border-radius: 4px; cursor: not-allowed;"
+    >
+      添加
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="filter-all"
+      style="padding: 4px 12px; background-color: rgb(116, 192, 252); color: white; border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      全部
+    </button>
+    <button
+      data-testid="filter-active"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      进行中
+    </button>
+    <button
+      data-testid="filter-completed"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      已完成
+    </button>
+  </div>
+  <div
+    data-testid="todo-stats"
+    style="margin-bottom: 16px; padding: 8px; background-color: rgb(248, 249, 250); border-radius: 4px; font-size: 14px;"
+  >
+    总计: 
+    0
+     | 进行中: 
+    0
+     | 已完成:
+     
+    0
+  </div>
+  <div
+    data-testid="todo-items"
+  >
+    <div
+      data-testid="empty-message"
+      style="text-align: center; color: rgb(102, 102, 102); padding: 20px; font-style: italic;"
+    >
+      暂无待办事项
+    </div>
+  </div>
+</div>
+`;

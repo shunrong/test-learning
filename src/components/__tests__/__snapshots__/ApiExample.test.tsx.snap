@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApiExample组件 快照测试 应该匹配初始状态的快照 1`] = `
+<div
+  data-testid="api-example"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 600px;"
+>
+  <h3>
+    API 调用示例
+  </h3>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      获取所有用户
+    </h4>
+    <button
+      data-testid="fetch-users-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      获取用户列表
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      根据 ID 获取用户
+    </h4>
+    <div
+      style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"
+    >
+      <label>
+        用户 ID:
+      </label>
+      <input
+        data-testid="user-id-input"
+        style="padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 100px;"
+        type="number"
+        value="1"
+      />
+      <button
+        data-testid="get-user-button"
+        style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+      >
+        获取用户
+      </button>
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      使用 useFetch Hook
+    </h4>
+    <button
+      data-testid="use-fetch-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      通过 Hook 获取用户
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      创建新用户
+    </h4>
+    <button
+      data-testid="create-user-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      创建用户
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ApiExample组件 快照测试 应该匹配有数据状态的快照 1`] = `
+<div
+  data-testid="api-example"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 600px;"
+>
+  <h3>
+    API 调用示例
+  </h3>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      获取所有用户
+    </h4>
+    <button
+      data-testid="fetch-users-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      获取用户列表
+    </button>
+    <div
+      data-testid="users-list"
+      style="margin-top: 12px;"
+    >
+      <p>
+        获取到 
+        3
+         个用户:
+      </p>
+      <ul
+        style="max-height: 150px; overflow-y: auto;"
+      >
+        <li
+          data-testid="user-item-1"
+        >
+          张三
+           (
+          zhangsan@example.com
+          )
+        </li>
+        <li
+          data-testid="user-item-2"
+        >
+          李四
+           (
+          lisi@example.com
+          )
+        </li>
+        <li
+          data-testid="user-item-3"
+        >
+          王五
+           (
+          wangwu@example.com
+          )
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      根据 ID 获取用户
+    </h4>
+    <div
+      style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"
+    >
+      <label>
+        用户 ID:
+      </label>
+      <input
+        data-testid="user-id-input"
+        style="padding: 4px 8px; border: 1px solid #ddd; border-radius: 4px; width: 100px;"
+        type="number"
+        value="1"
+      />
+      <button
+        data-testid="get-user-button"
+        style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+      >
+        获取用户
+      </button>
+    </div>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      使用 useFetch Hook
+    </h4>
+    <button
+      data-testid="use-fetch-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      通过 Hook 获取用户
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 20px; padding: 12px; background-color: rgb(248, 249, 250); border-radius: 4px;"
+  >
+    <h4>
+      创建新用户
+    </h4>
+    <button
+      data-testid="create-user-button"
+      style="padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer; background-color: rgb(116, 192, 252); color: white;"
+    >
+      创建用户
+    </button>
+  </div>
+</div>
+`;

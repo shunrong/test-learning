@@ -31,8 +31,14 @@ export const UserProfile: React.FC<UserProfileProps> = ({
   };
 
   const handleSave = () => {
-    onEdit?.(editForm);
-    setIsEditing(false);
+    try {
+      onEdit?.(editForm);
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error in onEdit callback:", error);
+      // 即使回调出错，也要保持组件稳定性
+      setIsEditing(false);
+    }
   };
 
   const handleCancel = () => {
@@ -75,8 +81,14 @@ export const UserProfile: React.FC<UserProfileProps> = ({
       <div data-testid="user-profile-edit" style={containerStyle}>
         <h3>编辑用户信息</h3>
         <div style={{ marginBottom: "12px" }}>
-          <label style={{ display: "block", marginBottom: "4px" }}>姓名:</label>
+          <label
+            htmlFor="edit-name-input"
+            style={{ display: "block", marginBottom: "4px" }}
+          >
+            姓名:
+          </label>
           <input
+            id="edit-name-input"
             data-testid="edit-name-input"
             type="text"
             value={editForm.name}
@@ -92,8 +104,14 @@ export const UserProfile: React.FC<UserProfileProps> = ({
           />
         </div>
         <div style={{ marginBottom: "16px" }}>
-          <label style={{ display: "block", marginBottom: "4px" }}>邮箱:</label>
+          <label
+            htmlFor="edit-email-input"
+            style={{ display: "block", marginBottom: "4px" }}
+          >
+            邮箱:
+          </label>
           <input
+            id="edit-email-input"
             data-testid="edit-email-input"
             type="email"
             value={editForm.email}

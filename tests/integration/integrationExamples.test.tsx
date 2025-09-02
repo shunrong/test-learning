@@ -2,7 +2,7 @@
  * 集成测试示例 - 演示组件间交互和端到端测试场景
  */
 
-import React from "react";
+import React, { act } from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "@/App";
@@ -58,20 +58,26 @@ describe("集成测试示例", () => {
 
       // 1. 操作计数器
       const incrementButton = screen.getByTestId("increment-button");
-      await user.click(incrementButton);
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+        await user.click(incrementButton);
+      });
       expect(screen.getByTestId("count-display")).toHaveTextContent("2");
 
       // 2. 编辑用户信息
       const editButton = screen.getByTestId("edit-button");
-      await user.click(editButton);
+      await act(async () => {
+        await user.click(editButton);
+      });
 
       const nameInput = screen.getByTestId("edit-name-input");
       await user.clear(nameInput);
       await user.type(nameInput, "修改后的名称");
 
       const saveButton = screen.getByTestId("save-button");
-      await user.click(saveButton);
+      await act(async () => {
+        await user.click(saveButton);
+      });
 
       expect(screen.getByTestId("user-name")).toHaveTextContent("修改后的名称");
 
@@ -80,7 +86,9 @@ describe("集成测试示例", () => {
       const addTodoButton = screen.getByTestId("add-todo-button");
 
       await user.type(todoInput, "集成测试任务");
-      await user.click(addTodoButton);
+      await act(async () => {
+        await user.click(addTodoButton);
+      });
 
       expect(screen.getByText("集成测试任务")).toBeInTheDocument();
     });
@@ -120,7 +128,9 @@ describe("集成测试示例", () => {
       const addButton = screen.getByTestId("add-todo-button");
 
       await user.type(newTodoInput, "新任务");
-      await user.click(addButton);
+      await act(async () => {
+        await user.click(addButton);
+      });
 
       expect(screen.getByText("新任务")).toBeInTheDocument();
       expect(
@@ -134,7 +144,9 @@ describe("集成测试示例", () => {
 
       // 2. 切换任务状态
       const firstTodoCheckbox = screen.getByTestId("todo-checkbox-1");
-      await user.click(firstTodoCheckbox);
+      await act(async () => {
+        await user.click(firstTodoCheckbox);
+      });
 
       expect(
         screen.getByText("总计: 3 | 进行中: 1 | 已完成: 2")
@@ -142,7 +154,9 @@ describe("集成测试示例", () => {
 
       // 3. 过滤任务
       const completedFilter = screen.getByTestId("filter-completed");
-      await user.click(completedFilter);
+      await act(async () => {
+        await user.click(completedFilter);
+      });
 
       expect(screen.getByText("学习 React")).toBeInTheDocument();
       expect(screen.getByText("写测试")).toBeInTheDocument();
@@ -150,16 +164,22 @@ describe("集成测试示例", () => {
 
       // 4. 删除任务
       const deleteButton = screen.getByTestId("delete-todo-2");
-      await user.click(deleteButton);
+      await act(async () => {
+        await user.click(deleteButton);
+      });
 
       expect(screen.queryByText("写测试")).not.toBeInTheDocument();
 
       // 5. 清除已完成任务
       const activeFilter = screen.getByTestId("filter-all");
-      await user.click(activeFilter);
+      await act(async () => {
+        await user.click(activeFilter);
+      });
 
       const clearCompletedButton = screen.getByTestId("clear-completed-button");
-      await user.click(clearCompletedButton);
+      await act(async () => {
+        await user.click(clearCompletedButton);
+      });
 
       expect(screen.queryByText("学习 React")).not.toBeInTheDocument();
       expect(screen.getByText("新任务")).toBeInTheDocument();
@@ -218,7 +238,9 @@ describe("集成测试示例", () => {
 
       // 1. 获取用户列表
       const fetchUsersButton = screen.getByTestId("fetch-users-button");
-      await user.click(fetchUsersButton);
+      await act(async () => {
+        await user.click(fetchUsersButton);
+      });
 
       await waitFor(() => {
         expect(screen.getByTestId("users-list")).toBeInTheDocument();
@@ -234,7 +256,9 @@ describe("集成测试示例", () => {
 
       await user.clear(userIdInput);
       await user.type(userIdInput, "1");
-      await user.click(getUserButton);
+      await act(async () => {
+        await user.click(getUserButton);
+      });
 
       await waitFor(() => {
         expect(screen.getByTestId("selected-user")).toBeInTheDocument();
@@ -246,7 +270,9 @@ describe("集成测试示例", () => {
 
       // 3. 使用 useFetch Hook
       const useFetchButton = screen.getByTestId("use-fetch-button");
-      await user.click(useFetchButton);
+      await act(async () => {
+        await user.click(useFetchButton);
+      });
 
       await waitFor(() => {
         expect(screen.getByTestId("fetched-user")).toBeInTheDocument();
@@ -259,7 +285,9 @@ describe("集成测试示例", () => {
 
       // 4. 创建用户
       const createUserButton = screen.getByTestId("create-user-button");
-      await user.click(createUserButton);
+      await act(async () => {
+        await user.click(createUserButton);
+      });
 
       await waitFor(() => {
         expect(mockedUserService.createUser).toHaveBeenCalledWith({

@@ -1,0 +1,963 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`快照测试示例 1. 基础快照测试 Counter 组件带参数快照 1`] = `
+<div
+  data-testid="counter"
+>
+  <div
+    style="display: flex; align-items: center; gap: 16px;"
+  >
+    <button
+      data-testid="decrement-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(255, 107, 107);"
+      type="button"
+    >
+      -
+    </button>
+    <span
+      data-testid="count-display"
+      style="font-size: 24px; font-weight: bold; min-width: 60px; text-align: center;"
+    >
+      10
+    </span>
+    <button
+      data-testid="increment-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(81, 207, 102);"
+      type="button"
+    >
+      +
+    </button>
+    <button
+      data-testid="reset-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(116, 192, 252);"
+      type="button"
+    >
+      重置
+    </button>
+  </div>
+  <div
+    style="margin-top: 8px; font-size: 14px; color: rgb(102, 102, 102);"
+  >
+    范围: 
+    0
+     ~ 
+    20
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 1. 基础快照测试 Counter 组件默认状态快照 1`] = `
+<div
+  data-testid="counter"
+>
+  <div
+    style="display: flex; align-items: center; gap: 16px;"
+  >
+    <button
+      data-testid="decrement-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(255, 107, 107);"
+      type="button"
+    >
+      -
+    </button>
+    <span
+      data-testid="count-display"
+      style="font-size: 24px; font-weight: bold; min-width: 60px; text-align: center;"
+    >
+      0
+    </span>
+    <button
+      data-testid="increment-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(81, 207, 102);"
+      type="button"
+    >
+      +
+    </button>
+    <button
+      data-testid="reset-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(116, 192, 252);"
+      type="button"
+    >
+      重置
+    </button>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 1. 基础快照测试 UserProfile 组件在线状态快照 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <img
+      alt="张三的头像"
+      data-testid="user-avatar"
+      src="https://example.com/avatar.jpg"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;"
+    />
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      张三
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      zhangsan@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 1. 基础快照测试 UserProfile 组件离线状态快照 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(245, 245, 245);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <div
+      data-testid="default-avatar"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: rgb(221, 221, 221); display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgb(102, 102, 102); margin: 0px auto 12px;"
+    >
+      李
+    </div>
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      李四
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      lisi@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(134, 142, 150);"
+    >
+      离线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 2. 条件渲染快照 显示/隐藏编辑按钮的快照: 用户信息-显示编辑按钮 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <div
+      data-testid="default-avatar"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: rgb(221, 221, 221); display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgb(102, 102, 102); margin: 0px auto 12px;"
+    >
+      测
+    </div>
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      测试用户
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      test@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 2. 条件渲染快照 显示/隐藏编辑按钮的快照: 用户信息-隐藏编辑按钮 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <div
+      data-testid="default-avatar"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: rgb(221, 221, 221); display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgb(102, 102, 102); margin: 0px auto 12px;"
+    >
+      测
+    </div>
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      测试用户
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      test@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 2. 条件渲染快照 有头像 vs 无头像的快照对比: 用户信息-无头像 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <div
+      data-testid="default-avatar"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: rgb(221, 221, 221); display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgb(102, 102, 102); margin: 0px auto 12px;"
+    >
+      用
+    </div>
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      用户B
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      userb@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 2. 条件渲染快照 有头像 vs 无头像的快照对比: 用户信息-有头像 1`] = `
+<div
+  data-testid="user-profile"
+  style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+>
+  <div
+    style="text-align: center;"
+  >
+    <img
+      alt="用户A的头像"
+      data-testid="user-avatar"
+      src="https://example.com/avatar.jpg"
+      style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;"
+    />
+    <h3
+      data-testid="user-name"
+      style="margin: 0px 0px 8px 0px;"
+    >
+      用户A
+    </h3>
+    <p
+      data-testid="user-email"
+      style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+    >
+      usera@example.com
+    </p>
+    <span
+      data-testid="user-status"
+      style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+    >
+      在线
+    </span>
+    <div
+      style="margin-top: 16px;"
+    >
+      <button
+        data-testid="edit-button"
+        style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        编辑
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 3. 列表组件快照 只有已完成任务的列表快照 1`] = `
+<div
+  data-testid="todo-list"
+  style="max-width: 500px;"
+>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <input
+      data-testid="new-todo-input"
+      placeholder="添加新的待办事项..."
+      style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value=""
+    />
+    <button
+      data-testid="add-todo-button"
+      disabled=""
+      style="padding: 8px 16px; background-color: rgb(221, 221, 221); color: white; border-radius: 4px; cursor: not-allowed;"
+    >
+      添加
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="filter-all"
+      style="padding: 4px 12px; background-color: rgb(116, 192, 252); color: white; border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      全部
+    </button>
+    <button
+      data-testid="filter-active"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      进行中
+    </button>
+    <button
+      data-testid="filter-completed"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      已完成
+    </button>
+  </div>
+  <div
+    data-testid="todo-stats"
+    style="margin-bottom: 16px; padding: 8px; background-color: rgb(248, 249, 250); border-radius: 4px; font-size: 14px;"
+  >
+    总计: 
+    1
+     | 进行中: 
+    0
+     | 已完成:
+     
+    1
+  </div>
+  <div
+    data-testid="todo-items"
+  >
+    <div
+      data-testid="todo-item-2"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: rgb(248, 249, 250);"
+    >
+      <input
+        checked=""
+        data-testid="todo-checkbox-2"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-2"
+        style="flex: 1; text-decoration: line-through; color: rgb(102, 102, 102);"
+      >
+        编写单元测试
+      </span>
+      <button
+        data-testid="delete-todo-2"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+  </div>
+  <div
+    style="margin-top: 16px; text-align: center;"
+  >
+    <button
+      data-testid="clear-completed-button"
+      style="padding: 8px 16px; background-color: rgb(134, 142, 150); color: white; border-radius: 4px; cursor: pointer;"
+    >
+      清除已完成 (
+      1
+      )
+    </button>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 3. 列表组件快照 有数据的待办列表快照 1`] = `
+<div
+  data-testid="todo-list"
+  style="max-width: 500px;"
+>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <input
+      data-testid="new-todo-input"
+      placeholder="添加新的待办事项..."
+      style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value=""
+    />
+    <button
+      data-testid="add-todo-button"
+      disabled=""
+      style="padding: 8px 16px; background-color: rgb(221, 221, 221); color: white; border-radius: 4px; cursor: not-allowed;"
+    >
+      添加
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="filter-all"
+      style="padding: 4px 12px; background-color: rgb(116, 192, 252); color: white; border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      全部
+    </button>
+    <button
+      data-testid="filter-active"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      进行中
+    </button>
+    <button
+      data-testid="filter-completed"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      已完成
+    </button>
+  </div>
+  <div
+    data-testid="todo-stats"
+    style="margin-bottom: 16px; padding: 8px; background-color: rgb(248, 249, 250); border-radius: 4px; font-size: 14px;"
+  >
+    总计: 
+    3
+     | 进行中: 
+    2
+     | 已完成:
+     
+    1
+  </div>
+  <div
+    data-testid="todo-items"
+  >
+    <div
+      data-testid="todo-item-1"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: white;"
+    >
+      <input
+        data-testid="todo-checkbox-1"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-1"
+        style="flex: 1; text-decoration: none; color: rgb(0, 0, 0);"
+      >
+        学习React测试
+      </span>
+      <button
+        data-testid="delete-todo-1"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+    <div
+      data-testid="todo-item-2"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: rgb(248, 249, 250);"
+    >
+      <input
+        checked=""
+        data-testid="todo-checkbox-2"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-2"
+        style="flex: 1; text-decoration: line-through; color: rgb(102, 102, 102);"
+      >
+        编写单元测试
+      </span>
+      <button
+        data-testid="delete-todo-2"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+    <div
+      data-testid="todo-item-3"
+      style="display: flex; align-items: center; padding: 12px; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 8px; background-color: white;"
+    >
+      <input
+        data-testid="todo-checkbox-3"
+        style="margin-right: 12px;"
+        type="checkbox"
+      />
+      <span
+        data-testid="todo-text-3"
+        style="flex: 1; text-decoration: none; color: rgb(0, 0, 0);"
+      >
+        掌握快照测试
+      </span>
+      <button
+        data-testid="delete-todo-3"
+        style="padding: 4px 8px; background-color: rgb(255, 107, 107); color: white; border-radius: 4px; cursor: pointer;"
+      >
+        删除
+      </button>
+    </div>
+  </div>
+  <div
+    style="margin-top: 16px; text-align: center;"
+  >
+    <button
+      data-testid="clear-completed-button"
+      style="padding: 8px 16px; background-color: rgb(134, 142, 150); color: white; border-radius: 4px; cursor: pointer;"
+    >
+      清除已完成 (
+      1
+      )
+    </button>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 3. 列表组件快照 空待办列表快照 1`] = `
+<div
+  data-testid="todo-list"
+  style="max-width: 500px;"
+>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <input
+      data-testid="new-todo-input"
+      placeholder="添加新的待办事项..."
+      style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;"
+      type="text"
+      value=""
+    />
+    <button
+      data-testid="add-todo-button"
+      disabled=""
+      style="padding: 8px 16px; background-color: rgb(221, 221, 221); color: white; border-radius: 4px; cursor: not-allowed;"
+    >
+      添加
+    </button>
+  </div>
+  <div
+    style="margin-bottom: 16px; display: flex; gap: 8px;"
+  >
+    <button
+      data-testid="filter-all"
+      style="padding: 4px 12px; background-color: rgb(116, 192, 252); color: white; border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      全部
+    </button>
+    <button
+      data-testid="filter-active"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      进行中
+    </button>
+    <button
+      data-testid="filter-completed"
+      style="padding: 4px 12px; background-color: rgb(248, 249, 250); color: rgb(73, 80, 87); border: 1px solid #dee2e6; border-radius: 4px; cursor: pointer;"
+    >
+      已完成
+    </button>
+  </div>
+  <div
+    data-testid="todo-stats"
+    style="margin-bottom: 16px; padding: 8px; background-color: rgb(248, 249, 250); border-radius: 4px; font-size: 14px;"
+  >
+    总计: 
+    0
+     | 进行中: 
+    0
+     | 已完成:
+     
+    0
+  </div>
+  <div
+    data-testid="todo-items"
+  >
+    <div
+      data-testid="empty-message"
+      style="text-align: center; color: rgb(102, 102, 102); padding: 20px; font-style: italic;"
+    >
+      暂无待办事项
+    </div>
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 5. 自定义序列化器示例 Date 对象快照（使用自定义序列化） 1`] = `
+{
+  "attendees": [
+    "张三",
+    "李四",
+  ],
+  "date": "2023-06-15T14:30:00.000Z",
+  "name": "会议",
+}
+`;
+
+exports[`快照测试示例 5. 自定义序列化器示例 函数属性快照（需要特殊处理） 1`] = `
+{
+  "name": "Button",
+  "props": {
+    "children": "点击我",
+    "disabled": false,
+    "onClick": "function",
+  },
+}
+`;
+
+exports[`快照测试示例 6. 快照更新场景 文案变化会影响快照: 成功消息 1`] = `
+<div
+  class="message success"
+>
+  操作成功！
+</div>
+`;
+
+exports[`快照测试示例 6. 快照更新场景 文案变化会影响快照: 错误消息 1`] = `
+<div
+  class="message error"
+>
+  操作失败，请重试
+</div>
+`;
+
+exports[`快照测试示例 6. 快照更新场景 样式变化会影响快照 1`] = `
+<div
+  class="test-class"
+  style="padding: 10px; margin: 5px;"
+>
+  样式化组件
+</div>
+`;
+
+exports[`快照测试示例 7. 快照测试最佳实践 使用描述性的快照名称: 计数器-初始值5-范围0到10 1`] = `
+<div
+  data-testid="counter"
+>
+  <div
+    style="display: flex; align-items: center; gap: 16px;"
+  >
+    <button
+      data-testid="decrement-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(255, 107, 107);"
+      type="button"
+    >
+      -
+    </button>
+    <span
+      data-testid="count-display"
+      style="font-size: 24px; font-weight: bold; min-width: 60px; text-align: center;"
+    >
+      5
+    </span>
+    <button
+      data-testid="increment-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(81, 207, 102);"
+      type="button"
+    >
+      +
+    </button>
+    <button
+      data-testid="reset-button"
+      style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(116, 192, 252);"
+      type="button"
+    >
+      重置
+    </button>
+  </div>
+  <div
+    style="margin-top: 8px; font-size: 14px; color: rgb(102, 102, 102);"
+  >
+    范围: 
+    0
+     ~ 
+    10
+  </div>
+</div>
+`;
+
+exports[`快照测试示例 7. 快照测试最佳实践 处理动态内容 1`] = `
+<div>
+  <h1>
+    当前时间
+  </h1>
+  <p
+    data-testid="timestamp"
+  >
+    2023-06-15T10:00:00Z
+  </p>
+</div>
+`;
+
+exports[`快照测试示例 7. 快照测试最佳实践 组合组件的快照 1`] = `
+<div
+  class="dashboard"
+>
+  <header>
+    <h1>
+      仪表板
+    </h1>
+  </header>
+  <main>
+    <div
+      data-testid="user-profile"
+      style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; max-width: 300px; background-color: rgb(255, 255, 255);"
+    >
+      <div
+        style="text-align: center;"
+      >
+        <div
+          data-testid="default-avatar"
+          style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; background-color: rgb(221, 221, 221); display: flex; align-items: center; justify-content: center; font-size: 24px; color: rgb(102, 102, 102); margin: 0px auto 12px;"
+        >
+          管
+        </div>
+        <h3
+          data-testid="user-name"
+          style="margin: 0px 0px 8px 0px;"
+        >
+          管理员
+        </h3>
+        <p
+          data-testid="user-email"
+          style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+        >
+          admin@example.com
+        </p>
+        <span
+          data-testid="user-status"
+          style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; color: white; background-color: rgb(81, 207, 102);"
+        >
+          在线
+        </span>
+        <div
+          style="margin-top: 16px;"
+        >
+          <button
+            data-testid="edit-button"
+            style="padding: 8px 16px; background-color: rgb(116, 192, 252); color: white; border-radius: 4px; cursor: pointer;"
+          >
+            编辑
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="counter"
+    >
+      <div
+        style="display: flex; align-items: center; gap: 16px;"
+      >
+        <button
+          data-testid="decrement-button"
+          style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(255, 107, 107);"
+          type="button"
+        >
+          -
+        </button>
+        <span
+          data-testid="count-display"
+          style="font-size: 24px; font-weight: bold; min-width: 60px; text-align: center;"
+        >
+          0
+        </span>
+        <button
+          data-testid="increment-button"
+          style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(81, 207, 102);"
+          type="button"
+        >
+          +
+        </button>
+        <button
+          data-testid="reset-button"
+          style="padding: 8px 16px; margin: 0px 4px; border-radius: 4px; cursor: pointer; font-size: 16px; background-color: rgb(116, 192, 252);"
+          type="button"
+        >
+          重置
+        </button>
+      </div>
+      <div
+        style="margin-top: 8px; font-size: 14px; color: rgb(102, 102, 102);"
+      >
+        范围: 
+        -∞
+         ~ 
+        100
+      </div>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`快照测试示例 7. 快照测试最佳实践 避免快照过于庞大: 用户名称元素 1`] = `
+<h3
+  data-testid="user-name"
+  style="margin: 0px 0px 8px 0px;"
+>
+  测试
+</h3>
+`;
+
+exports[`快照测试示例 7. 快照测试最佳实践 避免快照过于庞大: 用户邮箱元素 1`] = `
+<p
+  data-testid="user-email"
+  style="margin: 0px 0px 12px 0px; color: rgb(102, 102, 102);"
+>
+  test@example.com
+</p>
+`;
+
+exports[`快照测试示例 8. 序列化和属性快照 React 元素属性快照 1`] = `
+{
+  "children": "提交",
+  "className": "btn btn-primary",
+  "disabled": true,
+  "type": "button",
+}
+`;
+
+exports[`快照测试示例 8. 序列化和属性快照 组件 props 快照 1`] = `
+{
+  "avatar": "https://example.com/avatar.jpg",
+  "email": "zhangsan@example.com",
+  "isActive": true,
+  "name": "张三",
+  "showEditButton": true,
+}
+`;
+
+exports[`快照测试示例 9. 错误状态快照 错误边界组件快照: 正常状态 1`] = `
+<div>
+  正常内容
+</div>
+`;
+
+exports[`快照测试示例 9. 错误状态快照 错误边界组件快照: 错误状态 1`] = `
+<div
+  class="error-boundary"
+>
+  <h2>
+    出错了！
+  </h2>
+  <p>
+    请刷新页面重试
+  </p>
+</div>
+`;
+
+exports[`快照测试示例 10. 快照维护技巧 渐进式快照更新: 按钮-新版本 1`] = `
+<button
+  class="new-button modern"
+>
+  新按钮样式
+</button>
+`;
+
+exports[`快照测试示例 10. 快照维护技巧 渐进式快照更新: 按钮-旧版本 1`] = `
+<button
+  class="old-button"
+>
+  旧按钮样式
+</button>
+`;
+
+exports[`快照测试示例 10. 快照维护技巧 版本化快照 - 记录重要变更: 应用头部-v1.0 1`] = `
+<div
+  class="app-header-v1"
+>
+  <h1>
+    应用标题
+  </h1>
+  <nav>
+    <a
+      href="/"
+    >
+      首页
+    </a>
+    <a
+      href="/about"
+    >
+      关于
+    </a>
+  </nav>
+</div>
+`;

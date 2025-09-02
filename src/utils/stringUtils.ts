@@ -19,8 +19,22 @@ export const isPalindrome = (str: string): boolean => {
 
 // 验证函数
 export const isValidEmail = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  // 改进的邮箱验证：支持更多字符但排除明显错误格式
+  if (!email || email.length === 0) return false;
+  if (email.includes("..") || email.includes(" ")) return false;
+  if (email.startsWith("@") || email.endsWith("@")) return false;
+  if (email.startsWith(".") || email.endsWith(".")) return false;
+
+  const parts = email.split("@");
+  if (parts.length !== 2) return false;
+
+  const [localPart, domainPart] = parts;
+  if (localPart.length === 0 || domainPart.length === 0) return false;
+
+  // 域名必须包含至少一个点，且有有效的顶级域名
+  const domainRegex =
+    /^[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?\.([a-zA-Z]{2,})+$/;
+  return domainRegex.test(domainPart);
 };
 
 export const isValidPhone = (phone: string): boolean => {
@@ -50,12 +64,15 @@ export const truncateText = (text: string, maxLength: number): string => {
 };
 
 export const slugify = (text: string): string => {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  return (
+    text
+      .toLowerCase()
+      .trim()
+      // 保留中文、英文字母、数字、空格和连字符，移除其他特殊字符
+      .replace(/[^\u4e00-\u9fa5\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+  );
 };
 
 // 文本统计

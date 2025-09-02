@@ -22,24 +22,31 @@ export function useLocalStorage<T>(
   // 设置值的函数
   const setValue = useCallback(
     (value: T | ((val: T) => T)) => {
-      try {
+      setStoredValue((currentValue) => {
         // 允许 value 是一个函数，这样我们就有了与 useState 相同的 API
         const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
+          value instanceof Function ? value(currentValue) : value;
 
-        setStoredValue(valueToStore);
-
-        // 保存到 localStorage
-        if (valueToStore === undefined) {
-          window.localStorage.removeItem(key);
-        } else {
-          window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        try {
+          // 保存到 localStorage
+          if (valueToStore === undefined) {
+            window.localStorage.removeItem(key);
+            return initialValue;
+          } else if (valueToStore === null) {
+            window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            return valueToStore;
+          } else {
+            window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            return valueToStore;
+          }
+        } catch (error) {
+          console.error(`Error setting localStorage key "${key}":`, error);
+          // 即使 localStorage 操作失败，我们仍然更新内存状态
+          return valueToStore === undefined ? initialValue : valueToStore;
         }
-      } catch (error) {
-        console.error(`Error setting localStorage key "${key}":`, error);
-      }
+      });
     },
-    [key, storedValue]
+    [key, initialValue]
   );
 
   // 删除值的函数

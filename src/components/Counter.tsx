@@ -51,6 +51,7 @@ export const Counter: React.FC<CounterProps> = ({
     <div data-testid="counter">
       <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
         <button
+          type="button"
           data-testid="decrement-button"
           onClick={decrement}
           disabled={!canDecrement}
@@ -76,6 +77,7 @@ export const Counter: React.FC<CounterProps> = ({
         </span>
 
         <button
+          type="button"
           data-testid="increment-button"
           onClick={increment}
           disabled={!canIncrement}
@@ -89,6 +91,7 @@ export const Counter: React.FC<CounterProps> = ({
         </button>
 
         <button
+          type="button"
           data-testid="reset-button"
           onClick={reset}
           style={{ ...buttonStyle, backgroundColor: "#74c0fc" }}

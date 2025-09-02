@@ -2,7 +2,7 @@
  * Counter 组件测试 - 演示基础 React 组件测试
  */
 
-import React from "react";
+import React, { act } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Counter } from "../Counter";
@@ -56,10 +56,14 @@ describe("Counter组件", () => {
 
       expect(countDisplay).toHaveTextContent("0");
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("1");
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("2");
     });
 
@@ -72,10 +76,14 @@ describe("Counter组件", () => {
 
       expect(countDisplay).toHaveTextContent("5");
 
-      await user.click(decrementButton);
+      await act(async () => {
+        await user.click(decrementButton);
+      });
       expect(countDisplay).toHaveTextContent("4");
 
-      await user.click(decrementButton);
+      await act(async () => {
+        await user.click(decrementButton);
+      });
       expect(countDisplay).toHaveTextContent("3");
     });
 
@@ -88,12 +96,16 @@ describe("Counter组件", () => {
       const countDisplay = screen.getByTestId("count-display");
 
       // 先改变计数
-      await user.click(incrementButton);
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("12");
 
       // 重置
-      await user.click(resetButton);
+      await act(async () => {
+        await user.click(resetButton);
+      });
       expect(countDisplay).toHaveTextContent("10");
     });
 
@@ -117,13 +129,19 @@ describe("Counter组件", () => {
       const decrementButton = screen.getByTestId("decrement-button");
       const countDisplay = screen.getByTestId("count-display");
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("5");
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("10");
 
-      await user.click(decrementButton);
+      await act(async () => {
+        await user.click(decrementButton);
+      });
       expect(countDisplay).toHaveTextContent("5");
     });
   });
@@ -139,7 +157,9 @@ describe("Counter组件", () => {
 
         expect(incrementButton).toBeEnabled();
 
-        await user.click(incrementButton);
+        await act(async () => {
+          await user.click(incrementButton);
+        });
         expect(countDisplay).toHaveTextContent("10");
         expect(incrementButton).toBeDisabled();
       });
@@ -152,7 +172,9 @@ describe("Counter组件", () => {
         const countDisplay = screen.getByTestId("count-display");
 
         // 尝试递增，但会超过最大值，应该保持不变
-        await user.click(incrementButton);
+        await act(async () => {
+          await user.click(incrementButton);
+        });
         expect(countDisplay).toHaveTextContent("8");
         expect(incrementButton).toBeDisabled();
       });
@@ -168,7 +190,9 @@ describe("Counter组件", () => {
 
         expect(decrementButton).toBeEnabled();
 
-        await user.click(decrementButton);
+        await act(async () => {
+          await user.click(decrementButton);
+        });
         expect(countDisplay).toHaveTextContent("0");
         expect(decrementButton).toBeDisabled();
       });
@@ -181,7 +205,9 @@ describe("Counter组件", () => {
         const countDisplay = screen.getByTestId("count-display");
 
         // 尝试递减，但会低于最小值，应该保持不变
-        await user.click(decrementButton);
+        await act(async () => {
+          await user.click(decrementButton);
+        });
         expect(countDisplay).toHaveTextContent("2");
         expect(decrementButton).toBeDisabled();
       });
@@ -213,10 +239,14 @@ describe("Counter组件", () => {
       // 初始渲染时应该调用一次
       expect(onCountChange).toHaveBeenCalledWith(0);
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(onCountChange).toHaveBeenCalledWith(1);
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(onCountChange).toHaveBeenCalledWith(2);
 
       expect(onCountChange).toHaveBeenCalledTimes(3);
@@ -233,8 +263,12 @@ describe("Counter组件", () => {
 
       onCountChange.mockClear(); // 清除初始调用
 
-      await user.click(incrementButton);
-      await user.click(resetButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
+      await act(async () => {
+        await user.click(resetButton);
+      });
 
       expect(onCountChange).toHaveBeenCalledWith(6);
       expect(onCountChange).toHaveBeenCalledWith(5);
@@ -330,7 +364,9 @@ describe("Counter组件", () => {
       const incrementButton = screen.getByTestId("increment-button");
       const countDisplay = screen.getByTestId("count-display");
 
-      await user.click(incrementButton);
+      await act(async () => {
+        await user.click(incrementButton);
+      });
       expect(countDisplay).toHaveTextContent("0"); // 应该保持不变
     });
   });
@@ -359,7 +395,9 @@ describe("Counter组件", () => {
 
       // 快速点击多次
       for (let i = 0; i < 20; i++) {
-        await user.click(incrementButton);
+        await act(async () => {
+          await user.click(incrementButton);
+        });
       }
 
       const end = performance.now();

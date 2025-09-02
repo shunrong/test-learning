@@ -80,8 +80,8 @@ module.exports = {
     }
   },
   
-  // Mock 静态资源
-  moduleNameMapping: {
+  // 模块路径映射
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
